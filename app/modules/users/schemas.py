@@ -1,0 +1,37 @@
+from pydantic import BaseModel, EmailStr, Field
+from typing import Optional
+
+class Signup(BaseModel):
+        first_name: str
+        last_name: str
+        email: EmailStr
+        username: str
+        password: str = Field(..., min_length=6)
+
+
+class Login(BaseModel):
+    email: Optional[EmailStr] = None
+    username: Optional[str] = None
+    password: str
+
+class userResponse(BaseModel):
+    id: str
+    first_name: str
+    last_name: str
+    email: EmailStr
+    username: str
+    role: Optional[str] = None
+
+class RegisterResponse(BaseModel):
+    message: str
+    token: str
+
+class LoginResponse(BaseModel):
+    message: str
+    token: str
+    user: userResponse
+    #dd
+
+model_config = {
+    "from_attributes": True
+}

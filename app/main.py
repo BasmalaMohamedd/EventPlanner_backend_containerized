@@ -9,18 +9,14 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI(title="EventPlanner API")
 
 # CORS setup should be here before starting Server
-origins = [
-    "http://127.0.0.1:5173",  # your frontend
-    "http://localhost:5173",  # sometimes you use this instead
-    "http://frontend106-basmala-student-dev.apps.rm3.7wse.p1.openshiftapps.com"
-]
+
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # Allow only your frontend URLs
+    allow_origins=[""],  # This allows any website to talk to your API
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all HTTP methods (POST, GET, etc.)
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=[""],  # Allows GET, POST, PUT, DELETE, etc.
+    allow_headers=["*"],  # Allows all headers (Authorization, Content-Type, etc.)
 )
 # include all routers
 app.include_router(user_router)
@@ -36,4 +32,5 @@ def root():
 
 if __name__ == "__main__":
     uvicorn.run("app.main:app", host="127.0.0.1", port=8000, reload=True)
+
 

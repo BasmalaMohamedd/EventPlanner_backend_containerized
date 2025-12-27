@@ -5,7 +5,7 @@ import os
 
 load_dotenv()
 
-MONGO_URI = "mongodb://database:27017/EventPlanner"
+MONGO_URI = os.getenv("MONGO_URI")
 client = AsyncIOMotorClient(MONGO_URI, tls=False)
 dataBase = client['EventPlanner']
 
@@ -42,6 +42,7 @@ event_attendees_collection = dataBase["event_attendees"]
 #         print("❌ Connection failed:", e)
 #
 # asyncio.run(test_connection())
+
 
 
 

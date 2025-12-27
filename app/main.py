@@ -12,6 +12,7 @@ app = FastAPI(title="EventPlanner API")
 origins = [
     "http://127.0.0.1:5173",  # your frontend
     "http://localhost:5173",  # sometimes you use this instead
+    "http://frontend106-basmala-student-dev.apps.rm3.7wse.p1.openshiftapps.com"
 ]
 
 app.add_middleware(

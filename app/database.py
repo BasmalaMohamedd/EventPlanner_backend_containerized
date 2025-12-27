@@ -5,7 +5,7 @@ import os
 
 load_dotenv()
 
-MONGO_URI = "http://database-basmala-student-dev.apps.rm3.7wse.p1.openshiftapps.com"
+MONGO_URI = "database-basmala-student-dev.apps.rm3.7wse.p1.openshiftapps.com"
 client = AsyncIOMotorClient(MONGO_URI, tls=False)
 dataBase = client['EventPlanner']
 
@@ -42,4 +42,5 @@ event_attendees_collection = dataBase["event_attendees"]
 #         print("❌ Connection failed:", e)
 #
 # asyncio.run(test_connection())
+
 
